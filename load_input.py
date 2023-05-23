@@ -96,6 +96,6 @@ class Load_Input:
             f'titleIds = 00050000101C9300,00050000101C9400,00050000101C9500\n' \
             f'name = {name}\n' \
             f'path = \"The Legend of Zelda: Breath of the Wild/Game Mods/{name}\"\n' \
-            f'description = {name} made by banan039\'s Standalone Items Creator\nversion = 3'
+            f'description = {name} made by banan039 Ylimsh\'s Standalone Items Creator\nversion = 3'
         with open(f'{self.pack_name}\\rules.txt', 'w') as f:
             f.write(s)

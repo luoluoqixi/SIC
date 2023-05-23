@@ -27,6 +27,14 @@ valid_rgb = 'rgb(21, 155, 130)'
 invalid_rgb = 'rgb(239, 74, 70)'
 BG_COLOR = [47, 49, 54]
 
+def get_keys_values(obj):
+    keys = []
+    values = []
+    for i in obj.keys():
+        keys.append(i)
+        values.append(obj[i])
+    return keys, values
+
 
 class Window(QMainWindow, Ui_SIC):
 
@@ -38,9 +46,23 @@ class Window(QMainWindow, Ui_SIC):
         self.config = 'config.ini'
         self.data_json = file_to_dict('res/res.json')
         self.shops = self.data_json['shops']
+        shops_keys, shops_values = get_keys_values(self.shops)
+        self.shops_keys = shops_keys
+        self.shops_values = shops_values
+        self.shops_name = self.data_json['shops_name']
+        shops_name_keys, shops_name_values = get_keys_values(self.shops_name)
+        self.shops_name_keys = shops_name_keys
+        self.shops_name_values = shops_name_values
         self.shops_rev = self.data_json['shops_rev']
         # self.actors = get_res('Actors']
         self.weapons = self.data_json['weapons']
+        weapons_keys, weapons_values = get_keys_values(self.weapons)
+        self.weapons_keys = weapons_keys
+        self.weapons_values = weapons_values
+        self.weapons_name = self.data_json['weapons_name']
+        weapons_name_keys, weapons_name_values = get_keys_values(self.weapons_name)
+        self.weapons_name_keys = weapons_name_keys
+        self.weapons_name_values = weapons_name_values
         self.armors = self.data_json['armors']
         self.items = self.data_json['items']
         self.items_rev = self.data_json['items_rev']
@@ -90,7 +112,7 @@ class Window(QMainWindow, Ui_SIC):
         self.Clear_list.clicked.connect(self.clear_list)
         self.Remove_from_mod.clicked.connect(self.remove_from_mod)
         self.Options.clicked.connect(self.options)
-        self.patreon.clicked.connect(lambda: os.system(f'start https://www.patreon.com/user?u=32002965'))
+        self.patreon.clicked.connect(lambda: os.system(f'start https://docs.qq.com/doc/DWnRGT0ZQR25WZ29w'))
         self.Random_Crafting.clicked.connect(lambda: random_crafting_requirements(self))
         self.Random_Crafting_2.clicked.connect(lambda: random_crafting_requirements_2(self))
         # self.patreon.hide()
@@ -111,6 +133,7 @@ class Window(QMainWindow, Ui_SIC):
         for w, item in self.weapons.items():
             icon_tmp = QIcon(os.path.join(r'res\icons', f'{item}.png'))
             self.base_2.addItem(icon_tmp, w)
+            self.base_2_name.addItem(icon_tmp, self.weapons_name[w])
         # self.base.addItems(self.armors)
         for a, item in self.armors.items():
             icon_tmp = QIcon(os.path.join(r'res\icons', f'{item}.png'))
@@ -134,6 +157,7 @@ class Window(QMainWindow, Ui_SIC):
         if os.path.exists(r'res\icons'):
             self.series.setIconSize(self.combobox_icon_size_big)
             self.base_2.setIconSize(self.combobox_icon_size_big)
+            self.base_2_name.setIconSize(self.combobox_icon_size_big)
             self.effect.setIconSize(self.combobox_icon_size)
             self.base.setIconSize(self.combobox_icon_size_big)
             self.item1.setIconSize(self.combobox_icon_size)
@@ -144,7 +168,8 @@ class Window(QMainWindow, Ui_SIC):
             self.item3_2.setIconSize(self.combobox_icon_size)
 
         self.sheath.addItems(self.sheaths)
-        self.shop.addItems(self.shops)
+        self.shop.addItems(self.shops_keys)
+        self.shop_name.addItems(self.shops_name_values)
 
         # self.effect.addItems(self.effects)
         for eff in self.effects:
@@ -159,11 +184,13 @@ class Window(QMainWindow, Ui_SIC):
         self.item2.setMaxVisibleItems(medium_h)
         self.item3.setMaxVisibleItems(medium_h)
         self.base_2.setMaxVisibleItems(big_h)
+        self.base_2_name.setMaxVisibleItems(big_h)
         self.base.setMaxVisibleItems(big_h)
         self.sheath.setMaxVisibleItems(medium_h)
         self.effect.setMaxVisibleItems(medium_h)
         self.series.setMaxVisibleItems(medium_h)
         self.shop.setMaxVisibleItems(big_h)
+        self.shop_name.setMaxVisibleItems(big_h)
 
         # radio buttons
         if get_endianness():
@@ -373,6 +400,8 @@ class Window(QMainWindow, Ui_SIC):
 
 
 def main():
+    QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
+    QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps, True)
     app = QApplication(sys.argv)
     win = Window()
     generate_food_icons(win)

@@ -1,62 +1,60 @@
-Standalone Items Creator v1.0 by banan039
+Standalone Items Creator v1.0 by banan039  汉化：遇事勿争
+它是什么？
+创建独立物品的便捷工具。目前支持所有的武器和盔甲。它产生一个图形包，包含：
+-完整的目录结构（content\Model, content\Actor等）。
+-创建.sbactorpack文件。
+-演员信息条目。
+-新项目的bfres和sbitemico文件（模型需要在Switch Toolbox或其他工具中手动更改）。
+-在Bootup.pack中保存标志。
+-正确的名称和描述在游戏中可见。
+-由用户指定的制作要求。
 
-What is it?
-Handy tool that creates standalone items. For now all weapons and armor pieces are supported. It produces a graphic pack containing:
--full directories structure (content\Model, content\Actor etc.),
--creating .sbactorpack files,
--Actorinfo entries,
--bfres and sbitemico files for new items (the models need to be changed manually in Switch Toolbox or other tool),
--save flags in Bootup.pack,
--proper names and descriptions visible in game,
--crafting requirements specified by user,
+此外，所有物品都可以自动在Ancient Oven Cherry购买。创建mod包后，你仍然需要用BCML来安装它。
 
-Moreover all items are automatically available to buy at Ancient Oven Cherry. After creating a mod pack You still need to install it with BCML!
+主目录的设置与冰矛的设置相同：https://www.youtube.com/watch?v=WHY5h1Xa5d4
+在配置好主目录后，打开config.ini并改变。
+-switch_path：开关转储的绝对路径（应该以'content'结尾）。
+-wiiu_path：wiiu dump的绝对路径（应以'content'结尾）。
+-mods_path: 创建mod包的绝对路径。
+-lang：默认的语言文件
+-mode：开关或wiiu。
 
-The main directory is set up the same way as for Ice Spear: https://www.youtube.com/watch?v=WHY5h1Xa5d4
-After configuring main directory, open config.ini and change:
--switch_path: absolute path to switch dump (should end with 'content')
--wiiu_path: absolute path to wiiu dump (should end with 'content')
--mods_path: the absolute path in which mod packs will be created.
--lang: the default language file
--mode: either switch or wiiu
+在顶部有两个按钮。盔甲和武器。如果你想把武器添加到包里，就按 "武器"，如果是盔甲件，就按 "盔甲"。为了表明你正在使用哪个标签，请参考顶部的 "武器数据 "或 "盔甲数据 "文字。
 
-There are 2 buttons at the top: Armor and Weapon. If you want to add weapon to pack press "Weapon", if armor piece - "Armor". In order to indicate which tab you are using, refer to text "Weapon data" or "Armor data" at the top.
+游戏语言：选择语言
+模型名称：模型的名称。不能留空
+演员模板：创建者将基于的模板。如果其他后续字段留空，创建者将使用模板中的值。
+ID。新创建项目的新ID。我建议保持默认的bootw命名惯例，例如Weapon_Sword_XXX，其中XXX是新的未使用的数字，而不是My_pretty_pink_sword。
+剑鞘：新武器将使用的剑鞘的名称。如果你切换到盔甲选项卡，这个条目会变灰。
+（攻击/防御）：一个决定新武器的攻击力或新盾牌或盔甲的攻击力的值。
+耐久：新物品的耐久性。如果你使用 "盔甲 "选项卡则为灰色。
+无限耐久（牢不可破）：将新物品变成牢不可破，如果你使用盔甲标签，则为灰色。
+Elink：武器/盔甲的效果。如果你想保持与模板相同的链接，请留空。
+Slink：武器/盔甲的声音。如果你想保持与模板相同的声音，请留空。
+简介：物品的简介。如果留空，创建者将根据演员的名字字段来决定。
+魔法：如果你复制的是一根棍子，那么你可以从列表中选择一个魔法弹丸。如果你想使用一些自定义的演员条目，请随意手动输入。只有当你复制一个棍子类型的项目时才起作用。
+无限魔法：选择新的棍棒型武器在使用后是否需要充能。只在你复制杆类物品时起作用。不影响盾牌。
+子类型：选择武器的子类型。
+价格：选择新武器将花费多少钱。如果你想保持与模板相同的价格，请留空。
+物品名称：在这里为你的新物品命名，它是将在游戏中显示的名称。
+描述：新物品的描述。确保它足够短，以适应弹出窗口（通常是4行长）。
 
-Game Language: choose the language
-Mod name: the name of the mod. Can't be left blank
-Actor template: the template which the creator will base on. If any other subsequent fields will be left blank, the creator use the values from within the template.
-Actor ID: The new ID of newly created item. I recommend keeping with default botw naming convention, for example Weapon_Sword_XXX where XXX is new unused number instead of My_pretty_pink_sword.
-Sheath: the name of the sheath new weapon will use. This entry gets grayed out if you switch to Armor tab.
-Attack/Defence: a value that determines how much attack will new weapon deal or how much new shield or armor piece will give.
-Life: durability of the new item. Grayed out if you use Armor tab.
-Is unbreakable: turn new item unbreakable (True) or not (False). Grayed out if you use Armor tab.
-Elink: the effect of the weapon\armor. Leave empty if you want to keep the same elink from the template.
-Slink: sound of the weapon\armor. Leave empty if you want to keep the same slink from the template.
-Profile: the profile of the item. If left blank the creator will determine it basing on Actor name field.
-Magic: if you are copying a rod, then you can choose one of the magic projectiles from the list. If You want to use some custom actor entry feel free to type it manually. Works only if you are copying a rod type item.
-Infinite magic: choose whether the new rod type weapon will need a recharge after use or not. Works only if you are copying a rod type item. Does not affect shields.
-Subtype: choose subtype of the weapon.
-Price: choose how much new weapon will cost. Leave empty if you want to keep the same value from the template.
-Item name: name your new item here, it is the name that will be displayed ingame.
-Description: the description of the new item. Make sure to keep it short enough to fit botw popup windows (usually 4 lines long)
+制作要求：从列表中选择一个物品的制作成本。如果该字段为空，默认值（波克布林的身体部位）将被放在那里。
 
-Crafting requirements: choose from the list the crafting costs of an item. If the field is left empty the default values (bokoblins body parts) will be put there.
+这些字段只出现在盔甲标签中。
+效果：新盔甲将提供的附带效果。如果你想保持模板中的相同值，就留空。
+效果等级：效果等级。设置高于2或3可能会破坏该物品。如果你想保持与模板相同的值，请留空。
+系列：盔甲系列类型。如果你想保持与模板相同的值，请留空。
 
-The fields appearing only in Armor tab:
-Effect: bonus which new armor piece will give. Leave empty if you want to keep the same value from the template.
-Effect level: effect level. Setting higher than 2 or 3 may break the item. Leave empty if you want to keep the same value from the template.
-Series: the armor series type. Leave empty if you want to keep the same value from the template.
+右边有一个 "MOD内容 "列表。它指定了当前MOD包中的项目。
 
-On the right there is "Mod content" list. It specifies which items are in current mod pack.
-
-The buttons on the botom, from left to right:
-Exit: Exit
-Options: there you must set default language, the content folder location and mods path where the mod packs will be created.
-Clear: start creating anew, removes all items from "Mod content" list.
-Add weapon/armor to pack: adds new item to "Mod content". If there are 2 items in the same mod pack with the same name creator will prompt if you want to overwrite the existing entry.
-Save to file: saves current session to json file in jsons folder. The file name is the same as "Mod name" field. If "Mod field" is empty, current session will be saved as tmp.json
-Open from file: load previously saved file into the creator
-Create mod: creates a mod pack from current session.
-Remove from mod: removes an item selected from "Mod content" list. 
-Edit: loads the item selected from "Mod content" list. 
-View Readme: display this message
+底部的按钮，从左到右是
+退出：退出
+选项：你必须在这里设置默认语言、内容文件夹位置和创建模版包的路径。
+清除：重新开始创建，从 "MOD内容 "列表中删除所有项目。
+将武器/盔甲添加到包中：在 "MOD内容 "中添加新项目。如果在同一个MOD包中有两个相同名称的项目，创建者将提示你是否要覆盖现有条目。
+保存到文件：将当前会话保存到jsons文件夹中的json文件。文件名与 "mod name "字段相同。如果 "Mod字段 "为空，当前会话将被保存为tmp.json。
+从文件打开：将先前保存的文件载入创建者中。
+创建mod：从当前会话中创建一个mod包。
+从mod中删除：删除从 "mod内容 "列表中选择的项目。
+编辑：加载从 "mod content "列表中选择的项目。

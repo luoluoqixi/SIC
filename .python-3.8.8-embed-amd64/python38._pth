@@ -1,0 +1,8 @@
+python38.zip
+.
+Lib\site-packages
+Lib\site-packages\win32
+Lib\site-packages\pywin32_system32
+..\
+# Uncomment to run site.main() automatically
+#import site

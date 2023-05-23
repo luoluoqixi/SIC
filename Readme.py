@@ -11,16 +11,37 @@ import os
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QWidget
 
+def getScaleRate(w, h):
+    desktop = QtWidgets.QApplication.desktop().screenGeometry()
+    screenWidth = desktop.width()
+    screenHeight = desktop.height()
+    if screenWidth > screenHeight:
+        return (screenHeight * 0.85) / h
+    else:
+        return (screenWidth * 0.85) / w
 
 class Ui_Form(object):
+    def getScaleValue(self, v):
+        result = v * self.scaleRate
+        if result > 16777215:
+            return 16777215
+        else:
+            return result
+    def getScaleSize(self, w, h):
+        return QtCore.QSize(self.getScaleValue(w), self.getScaleValue(h))
+    def getScaleRect(self, x, y, w, h):
+        return QtCore.QRect(self.getScaleValue(x), self.getScaleValue(y), self.getScaleValue(w), self.getScaleValue(h))
     def setupUi(self, Form):
         Form.setObjectName("Readme")
-        Form.resize(1057, 881)
+        defaultWidth = 1057
+        defaultHeight = 881
+        self.scaleRate = getScaleRate(defaultWidth, defaultHeight)
+        Form.resize(self.getScaleValue(defaultWidth), self.getScaleValue(defaultHeight))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("res/icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Form.setWindowIcon(icon)
         self.frame = QtWidgets.QFrame(Form)
-        self.frame.setGeometry(QtCore.QRect(-11, -11, 1101, 941))
+        self.frame.setGeometry(self.getScaleRect(-11, -11, 1101, 941))
         self.frame.setStyleSheet("QProgressBar {\n"
 "    \n"
 "    background-color: rgb(96, 116, 165);\n"
@@ -142,7 +163,7 @@ class Ui_Form(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.readme = QtWidgets.QTextBrowser(self.frame)
-        self.readme.setGeometry(QtCore.QRect(20, 20, 1041, 861))
+        self.readme.setGeometry(self.getScaleRect(20, 20, 1041, 861))
         self.readme.setObjectName("readme")
 
         self.retranslateUi(Form)

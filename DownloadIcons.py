@@ -27,6 +27,8 @@ class DownloadIconsThread(object):
 def download_images(images, folder_name, exceptions=[], replacing=[], names={}):
     count = 0
 
+    # print(str(len(images)))
+
     # checking if images is not zero
     if len(images) != 0:
         for i, image in enumerate(images):
@@ -79,8 +81,10 @@ def resize_image(image, size=70):
 
 
 def download_icons(items, url='https://zelda.fandom.com/wiki/Material#Breath_of_the_Wild', folder_name='asdf'):
+    
+    print("sss")
     r = requests.get(url)
-
+    print("111")
     # Parse HTML Code
     soup = BeautifulSoup(r.text, 'html.parser')
 
@@ -89,6 +93,8 @@ def download_icons(items, url='https://zelda.fandom.com/wiki/Material#Breath_of_
 
     # Call folder create function
     create_folder(folder_name)
+
+    print(str(len(images)))
     download_images(images, folder_name, exceptions=['botw'], replacing=['BotW ', ' Icon'], names=items)
 
 
@@ -101,6 +107,8 @@ def generate_weapons_icons(win):
             continue
         if not os.path.exists(os.path.join(r'res\icons', f'{win.weapons[i]}.png')):
             if i not in unnacc:
+                # p = os.path.join(r'res\icons', f'{win.weapons[i]}.png')
+                # print(f'icon: {i}, {p}, start download...')
                 DownloadIconsThread(win.weapons, r'res\icons', url='https://zelda.fandom.com/wiki/Weapon')
                 DownloadIconsThread(win.weapons, r'res\icons', url='https://zelda.fandom.com/wiki/Bow')
                 DownloadIconsThread(win.weapons, r'res\icons', url='https://zelda.fandom.com/wiki/Shield')
@@ -111,8 +119,11 @@ def generate_food_icons(win):
     for i in win.items:
         if '★' in i:
             continue
+        if i == "":
+            continue
         if not os.path.exists(os.path.join(r'res\icons', f'{win.items[i]}.png')):
-            print(i)
+            p = os.path.join(r'res\icons', f'{win.items[i]}.png')
+            print(f'start download icon...')
             DownloadIconsThread(win.items, r'res\icons',
                                 url='https://zelda.fandom.com/wiki/Material#Breath_of_the_Wild')
             DownloadIconsThread(win.items, r'res\icons',
@@ -125,6 +136,7 @@ def generate_armors_icons(win):
         if '★' in i:
             continue
         if not os.path.exists(os.path.join(r'res\icons', f'{win.armors[i]}.png')):
-            print(i)
+            p = os.path.join(r'res\icons', f'{win.armors[i]}.png')
+            print(f'start download icon...')
             DownloadIconsThread(win.armors, r'res\icons', url='https://zelda.fandom.com/wiki/Armor#Breath_of_the_Wild')
             return

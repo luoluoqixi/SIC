@@ -107,7 +107,7 @@ venv.bak/
 # MY CUSTOM
 jsons/*
 .vscode/*
-res/icons/*
+# res/icons/*
 tmp/*
 temp/*
 config.ini

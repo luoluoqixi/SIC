@@ -13,7 +13,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_Options(object):
     def setupUi(self, Options):
-        Options.setObjectName("Options")
+        Options.setObjectName("设置")
         Options.resize(804, 359)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("pyqt\\../res/options.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -127,17 +127,16 @@ class Ui_Options(object):
     def retranslateUi(self, Options):
         _translate = QtCore.QCoreApplication.translate
         Options.setWindowTitle(_translate("Options", "Form"))
-        self.label.setText(_translate("Options", "Wii-U base game"))
-        self.label_2.setText(_translate("Options", "Switch dump path"))
-        self.label_3.setText(_translate("Options", "Mods output path"))
-        self.label_4.setText(_translate("Options", "Wii-U update"))
-        self.label_5.setText(_translate("Options", "Default language"))
-        self.is_bcml_settings.setText(_translate("Options", "Import automatically from bcml settings"))
-        self.wiiupath_browse.setText(_translate("Options", "Browse"))
-        self.wiiupath_update_browse.setText(_translate("Options", "Browse"))
-        self.switchpath_browse.setText(_translate("Options", "Browse"))
-        self.modspath_browse.setText(_translate("Options", "Browse"))
-        self.ok_button.setText(_translate("Options", "OK"))
-        self.cancel_button.setText(_translate("Options", "Cancel"))
-        self.import_from_bcml.setText(_translate("Options", "Import settings from BCML\n"
-"configuration"))
+        self.label.setText(_translate("Options", "Wii-U 基础游戏路径"))
+        self.label_2.setText(_translate("Options", "Switch 基础游戏路径"))
+        self.label_3.setText(_translate("Options", "模组输出路径"))
+        self.label_4.setText(_translate("Options", "Wii-U 更新路径"))
+        self.label_5.setText(_translate("Options", "默认语言"))
+        self.is_bcml_settings.setText(_translate("Options", "从BCML自动导入路径"))
+        self.wiiupath_browse.setText(_translate("Options", "浏览"))
+        self.wiiupath_update_browse.setText(_translate("Options", "浏览"))
+        self.switchpath_browse.setText(_translate("Options", "浏览"))
+        self.modspath_browse.setText(_translate("Options", "浏览"))
+        self.ok_button.setText(_translate("Options", "确定"))
+        self.cancel_button.setText(_translate("Options", "取消"))
+        self.import_from_bcml.setText(_translate("Options", "从BCML导入设置"))

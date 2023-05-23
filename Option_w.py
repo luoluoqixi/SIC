@@ -81,8 +81,8 @@ class options_window(QWidget, Ui_Options):
 
     def wiiu_update_browse_f(self):
         folder = str(QFileDialog.getExistingDirectory(self, "Select WiiU update directory"))
-        if folder: self.wiiupath.setText(folder)
-        self.validate(self.wiiupath)
+        if folder: self.wiiu_update.setText(folder)
+        self.validate(self.wiiu_update)
 
     def validate(self, object):
         if object.text():

@@ -51,7 +51,7 @@ def file_to_dict(file):
 
 
 def get_langs():
-    langs = ['Bootup_EUde', 'Bootup_EUen', 'Bootup_EUes', 'Bootup_EUfr', 'Bootup_EUit', 'Bootup_EUnl', 'Bootup_EUru',
+    langs = ['Bootup_CNzh','Bootup_TWzh','Bootup_JPja','Bootup_EUde', 'Bootup_EUen', 'Bootup_EUes', 'Bootup_EUfr', 'Bootup_EUit', 'Bootup_EUnl', 'Bootup_EUru',
              'Bootup_USen']
     config = configparser.ConfigParser()
     config.read('config.ini')
